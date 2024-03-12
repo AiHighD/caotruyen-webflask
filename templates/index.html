@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Home{% endblock %}</title>
+  <!-- Bootstrap core CSS -->
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="static/assets/css/fontawesome.css">
+  <link rel="stylesheet" href="static/assets/css/templatemo-snapx-photography.css">
+  <link rel="stylesheet" href="static/assets/css/owl.css">
+  <link rel="stylesheet" href="static/assets/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+  <link rel="stylesheet" href="static/assets/css/style.css">
+</head>
+<body> 
+  {% block header %}
+    <h1 class="custom-heading">Trang Doc Truyen</h1> 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Trang chủ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="form-inline ml-auto"> 
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+    </nav>
+    {% endblock %}
+    {% block content %}
+    <div class="container">
+      <div class="image-container">
+         {% for story in stories %}
+         <div class="image-card">
+             <a href="{{ url_for('story', slug=story['slug']) }}" name="{{ story['slug'] }}">
+                 <img src="{{ story['image_path'] }}" alt="{{ story['description'] }}">
+                 <h3>{{ story['title'] }}</h3>
+             </a>
+         </div> 
+        {% endfor %}
+      </div>
+  </div>
+  {% endblock %}
+  <button onclick="scrollToTop()" id="scrollBtn" title="Go to top">Top</button>
+</body>
+{% block script %}
+<!-- Bootstrap core JavaScript -->
+<script src="static/vendor/jquery/jquery.min.js"></script>
+<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="static/assets/js/isotope.min.js"></script>
+<script src="static/assets/js/owl-carousel.js"></script>
+<script src="static/js/script.js"></script>
+
+<script src="static/assets/js/tabs.js"></script>
+<script src="static/assets/js/popup.js"></script>
+<script src="static/assets/js/custom.js"></script><div id="lean_overlay"></div>
+</html>
+{%endblock%}

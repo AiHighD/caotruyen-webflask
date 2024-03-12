@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block title %}{{selected_story['description']}}{% endblock %}
+
+<body> 
+    {% block content %}
+    
+<div class="container">
+    <div class="image-container">
+        <div class="row justify-content-center">
+            <div class="content_page pd-20">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <img src="{{ selected_story['image_path'] }}", style="max-width: 100%;" >
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <h1 class="tblue fs-20">{{ selected_story['description'] }}</h1>
+                        <div class="mg-t-10">
+                            <div class="fb-like" data-href="#" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
+                        </div>
+                        <div class="mg-t-10">Tác giả: {{ selected_story['author'] }}</div>
+                    </div>
+                </div>
+                <hr>
+                <div class="box_chhr">
+                    <h3 class="pd-b-10">Danh sách chương</h3>
+                    {% for chap in range(selected_story['number_of_chapters']) %}
+                    <div class="line mg-b-10"></div>
+                    <hr>
+                    <div class="item_ch">
+                        <a href="{{ url_for('str_chap', slug=selected_story['slug'], chap_index=chap) }}">Chap {{ chap }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+</body>
+{% block script %} {%endblock%}
+</html>

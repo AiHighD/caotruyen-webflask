@@ -1,0 +1,32 @@
+{% extends "str.html" %}
+
+{% block title %}
+    {{ selected_story['title'] }} - Chap {{selected_chap_index}}
+{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="tblue mg-t-15">
+        <b>{{ selected_story['description'] }}</b>
+    </h1>
+    <h2 class="mg-t-10">Chap {{selected_chap_index}} </h2>
+    <div class="clear" style="clear: both;"></div>
+    <div class="fb-like" 
+         data-href="#" 
+         data-width="" 
+         data-layout="button_count" 
+         data-action="like" 
+         data-size="small" 
+         data-show-faces="true" 
+         data-share="true">
+    </div>
+</div>
+
+<div class="container">
+    <div class="image-container">
+        {% for image in images %}
+            <img src="{{ image }}" class="chapter-image" alt="Chapter Image">
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
